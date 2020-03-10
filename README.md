@@ -4,12 +4,17 @@
 2. Install app from play store
 3. Continue via terminal
 ```shell
-git clone http://github.com/johnmarcus015/reverse-engineering-core
-cd reverse-engineering-core
+git clone https://github.com/johnmarcus015/Reverse-Engineering-Core.git
+cd Reverse-Engineering-Core/
 chmod +x reverseAPKFromDevice.sh
 ./reverseAPKFromDevice.sh
 ```
-## Observation
+**OBS:** After execution of shellscript, you will have a file with name like:  
+
+```reverse-engineering-of-<app_name>```
+
+This directory contains all files resources, images, decoded files, etc...
+## Rebuild app
 To remake a app with your modifications, you need to use apktool: 
 ```shell
 java -jar apktool.jar b <file_with_modifications>
