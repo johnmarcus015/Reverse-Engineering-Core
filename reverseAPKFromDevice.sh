@@ -79,19 +79,14 @@ showMenu() {
     printf "\n[1] $TEXT_EXTRACT_IMAGES\n[2] $TEXT_EXTRACT_COLORS \n[3] $TEXT_EXTRACT_STRINGS\n[4] $TEXT_EXTRACT_ALL_OPTIONS\n[5] $TEXT_OPEN_JDGUI\n[q] $TEXT_QUIT\n\n"
     read -p ">> Select an action: " ACTION
 
-    if [ $ACTION = "q" ]; then
-        exit 0
-    fi
-
-    extractAPK
-
-    case $ACTION in    
-    "1") extractImages && nautilus $ROOT_IMAGES || xdg-open $ROOT_IMAGES ;;
-    "2") extractColors && nautilus $ROOT_COLORS || xdg-open $ROOT_COLORS ;;
-    "3") extractStrings && nautilus $ROOT_STRINGS || xdg-open $ROOT_STRINGS ;;
-    "4") extractAll && nautilus $ROOT_FILE || xdg-open $ROOT_FILE ;;
+    case $ACTION in
+    "1") extractAPK && extractImages && nautilus $ROOT_IMAGES || xdg-open $ROOT_IMAGES ;;
+    "2") extractAPK && extractColors && nautilus $ROOT_COLORS || xdg-open $ROOT_COLORS ;;
+    "3") extractAPK && extractStrings && nautilus $ROOT_STRINGS || xdg-open $ROOT_STRINGS ;;
+    "4") extractAPK && extractAll && nautilus $ROOT_FILE || xdg-open $ROOT_FILE ;;
     "5") nautilus $ROOT_FILE || xdg-open $ROOT_FILE && openJDGui ;;
-    "q") break ;;
+    "q") exit 0 ;;
+    *) echo "Invalid option" && showMenu ;;
     esac
 }
 
@@ -129,7 +124,7 @@ extractStrings() {
 #Extract codes, images, colors and strings from .apk
 extractAll() {
     extractImages
-    extractColors 
+    extractColors
     extractStrings
 }
 

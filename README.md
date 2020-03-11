@@ -1,9 +1,4 @@
 # Reverse Engineering Core - Android apps
-     ______     ______     ______     ______     ______   __  __
-    /\  == \   /\  ___\   /\  ___\   /\  __ \   /\  == \ /\ \/ /      
-    \ \  __<   \ \  __\   \ \ \____  \ \  __ \  \ \  _-/ \ \  _"-.    
-     \ \_\ \_\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_\    \ \_\ \_\   
-      \/_/ /_/   \/_____/   \/_____/   \/_/\/_/   \/_/     \/_/\/_/   
 ## How to use
 1. Plug a device to computer
 2. Install app from play store
@@ -14,6 +9,22 @@ cd Reverse-Engineering-Core/
 chmod +x reverseAPKFromDevice.sh
 ./reverseAPKFromDevice.sh
 ```
+4. Type the app name to make reverse engineering 
+```shell
+Enter the name of app: 
+```
+5. Select an option to extract files easily directly from apk
+```shell
+[1] Extract all images
+[2] Extract all colors 
+[3] Extract strings.xml
+[4] Extract all
+[5] Open JD-GUI
+[q] Quit
+
+>> Select an action: 
+```
+
 **OBS:** After execution of shellscript, you will have a file with name like:  
 
 ```reverse-engineering-of-<app_name>```
