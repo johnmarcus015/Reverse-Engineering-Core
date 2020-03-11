@@ -86,11 +86,11 @@ showMenu() {
     extractAPK
 
     case $ACTION in    
-    "1") extractImages true ;;
-    "2") extractColors true ;;
-    "3") extractStrings true ;;
-    "4") extractAll ;;
-    "5") openJDGui ;;
+    "1") extractImages && nautilus $ROOT_IMAGES || xdg-open $ROOT_IMAGES ;;
+    "2") extractColors && nautilus $ROOT_COLORS || xdg-open $ROOT_COLORS ;;
+    "3") extractStrings && nautilus $ROOT_STRINGS || xdg-open $ROOT_STRINGS ;;
+    "4") extractAll && nautilus $ROOT_FILE || xdg-open $ROOT_FILE ;;
+    "5") nautilus $ROOT_FILE || xdg-open $ROOT_FILE && openJDGui ;;
     "q") break ;;
     esac
 }
@@ -109,7 +109,7 @@ extractAPK() {
 extractImages() {
     ROOT_IMAGES=$ROOT_FILE/all_images/
     mkdir $ROOT_IMAGES
-    find $ROOT_FILE/ -type f -name "*.png" -exec cp "{}" $ROOT_IMAGES \;
+    find $ROOT_FILE/ -regex '.*\(jpg\|jpeg\|png\|gif\)' -exec cp "{}" $ROOT_IMAGES \;
 }
 
 #Extract all colors from .apk
