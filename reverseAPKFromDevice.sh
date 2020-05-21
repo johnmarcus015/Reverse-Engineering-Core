@@ -1,4 +1,18 @@
 #!/bin/bash
+
+#Get adb path
+getAdbPath() {
+    if hash adb 2>/dev/null; then
+        #Test adb showing devices
+        adb devices
+    else
+        #Set adb path as variable of terminal
+        read -p "Enter the path of adb: " ADB_PATH
+        eval echo 'export PATH=$PATH:$ADB_PATH' >> ~/.bash_profile
+        source ~/.bash_profile
+    fi
+}
+
 #Get name of app
 readAppName() {
     read -p "Enter the name of app: " APP_NAME
@@ -6,16 +20,21 @@ readAppName() {
 
 #Get package name of app
 getAppPackage() {
+    read -p "Enter the package of app: " PACKAGE_NAME
     echo "I: Searching package of app..."
-    PACKAGE_NAME=$(adb shell pm list packages | grep -i $APP_NAME)
-    PACKAGE_NAME="${PACKAGE_NAME:8}"
+    echo $PACKAGE_NAME
+    #Commented, because this method is not eficiently to all cases
+    # PACKAGE_NAME=$(adb shell pm list packages | grep -i $APP_NAME)
+    # PACKAGE_NAME="${PACKAGE_NAME:8}"
 }
 
 #Get base path of .apk
 getBasePath() {
     echo "I: Searching the base apk..."
     BASE_APK=$(adb shell pm path $PACKAGE_NAME | grep base.apk)
+    echo $BASE_APK
     BASE_APK="${BASE_APK:8}"
+    echo $BASE_APK
 }
 
 #Get .apk from device
@@ -136,6 +155,7 @@ openJDGui() {
 
 #StartProgram
 main() {
+    getAdbPath
     clear
     showLogo
     readAppName

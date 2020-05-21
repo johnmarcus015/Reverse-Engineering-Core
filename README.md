@@ -1,15 +1,30 @@
 # Reverse Engineering Core - Android apps
+## Important
+To run scripts, you need to have an Android SDK installed and adb command in terminal 
+```shell
+# path Android`s SDK on MacOS
+~/Library/Android/sdk/platform-tools/
+```
+To test adb command
+```shell
+adb devices
+```
+
+## Getting started
+```shell
+git clone https://github.com/johnmarcus015/Reverse-Engineering-Core.git
+cd Reverse-Engineering-Core/
+chmod +x reverseAPKFromDevice.sh
+```
+
 ## How to use
 1. Plug a device to computer
 2. Install app from play store
 3. Continue via terminal
 ```shell
-git clone https://github.com/johnmarcus015/Reverse-Engineering-Core.git
-cd Reverse-Engineering-Core/
-chmod +x reverseAPKFromDevice.sh
 ./reverseAPKFromDevice.sh
 ```
-4. Type the app name to make reverse engineering 
+4. Type the app`s name
 ```shell
 Enter the name of app: 
 ```
@@ -24,6 +39,8 @@ Enter the name of app:
 
 >> Select an action: 
 ```
+
+6. Type the package`s name of app 
 
 **OBS:** After execution of shellscript, you will have a file with name like:  
 
@@ -42,4 +59,4 @@ Tool to decode .apk to files with res, colos, etc...
 - DEX2JAR
 Tool to convert .dex to .class
 - JD-GUI (Version 1.6.6)
-Tool to decompile .class to .java
+Tool to decompile .class to .java and see smali
